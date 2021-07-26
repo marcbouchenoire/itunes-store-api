@@ -18,11 +18,15 @@
   "sideEffects": false,
   "source": "./src/index.ts",
   "main": "./dist/itunes-search-api.js",
-  "umd:main": "./dist/itunes-search-api.umd.js",
+  "unpkg": "./dist/itunes-search-api.umd.js",
   "module": "./dist/itunes-search-api.module.js",
-  "exports": "./dist/itunes-search-api.modern.js",
-  "esmodule": "./dist/itunes-search-api.modern.js",
-  "esnext": "./dist/itunes-search-api.modern.js",
+  "exports": {
+    ".": {
+      "require": "./dist/itunes-search-api.js",
+      "import": "./dist/itunes-search-api.modern.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "types": "./dist/index.d.ts",
   "lint-staged": {
     "**/*.{ts,tsx}": [
