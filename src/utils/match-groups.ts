@@ -1,14 +1,12 @@
-import { PlainObject } from "../types"
-
-interface RegExpMatchArray<T extends PlainObject<string>> {
+interface RegExpMatchArray<T extends Record<string, any>> {
   groups: T
 }
 
-export function matchGroups<T extends PlainObject<string>>(
+export function matchGroups<T extends Record<string, any>>(
   string: string,
   regex: RegExp
 ) {
-  const { groups } = (string.match(regex) ?? {}) as RegExpMatchArray<T>
+  const { groups } = (string.match(regex) ?? {}) as RegExpMatchArray<Partial<T>>
 
-  return groups
+  return groups ?? {}
 }

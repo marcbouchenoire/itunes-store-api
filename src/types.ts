@@ -1,22 +1,30 @@
 export type PlainObject<T = unknown> = Record<string, T>
 
-export interface Response<M extends Media, E extends Entities[M] = never> {
+export interface Options {
+  country: Country
+}
+
+export interface SearchOptions<M extends Media, E extends Entities[M] = never>
+  extends Options {
+  attribute: Attributes[M]
+  entity: E
+  explicit: boolean
+  limit: number
+  media: M
+  sort: Sort
+}
+
+export interface SearchResponse<
+  M extends Media,
+  E extends Entities[M] = never
+> {
   resultCount: number
   results: (E extends undefined ? Results[Entities[M]] : Results[E])[]
 }
 
-export interface Options<M extends Media, E extends Entities[M] = never> {
-  attribute: Attributes[M]
-  country: Country
-  entity: E
-  limit: number
-  media: M
-}
-
-export interface SearchOptions<M extends Media, E extends Entities[M] = never>
-  extends Options<M, E> {
-  explicit: boolean
-  sort: Sort
+export interface LookupResponse {
+  resultCount: 0 | 1
+  results: [] | [Results[keyof Results]]
 }
 
 export interface MatchOptions {

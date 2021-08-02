@@ -1,7 +1,7 @@
 {
   "name": "@bouchenoiremarc/itunes-search-api",
   "version": "0.0.0",
-  "description": "Query Apple catalogs using the iTunes Search API",
+  "description": "Query Apple catalogs using the iTunes Search API.",
   "author": "Marc Bouchenoire",
   "license": "MIT",
   "repository": "https://github.com/bouchenoiremarc/itunes-search-api",
@@ -43,20 +43,25 @@
     "access": "public"
   },
   "scripts": {
-    "build": "microbundle",
-    "clean": "rimraf node_modules",
+    "build": "microbundle --tsconfig tsconfig.build.json",
+    "clean": "jest --clearCache && rimraf node_modules",
     "lint": "eslint '**/*.{ts,tsx}' --fix && prettier --write '**/*.{ts,tsx}'",
-    "prepare": "rimraf dist && yarn build"
+    "prepare": "rimraf dist && yarn build",
+    "test": "jest"
   },
   "devDependencies": {
-    "@bouchenoiremarc/eslint-config": "^1.4.1",
+    "@bouchenoiremarc/eslint-config": "^1.5.1",
+    "@types/jest": "^26.0.24",
     "@types/node": "^16.4.3",
     "eslint": "^7.30.0",
     "husky": "4.3.8",
+    "jest": "^27.0.6",
+    "jest-extended": "^0.11.5",
     "lint-staged": "^11.0.1",
     "microbundle": "^0.13.3",
     "prettier": "^2.3.2",
     "rimraf": "^3.0.2",
+    "ts-jest": "^27.0.4",
     "typescript": "^4.3.5"
   },
   "dependencies": {
