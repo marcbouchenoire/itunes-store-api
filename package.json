@@ -47,6 +47,7 @@
     "clean": "jest --clearCache && rimraf node_modules",
     "lint": "eslint '**/*.{ts,tsx}' --fix && prettier --write '**/*.{ts,tsx}'",
     "prepare": "rimraf dist && yarn build",
+    "release": "yarn login && np",
     "test": "jest"
   },
   "devDependencies": {
@@ -59,6 +60,7 @@
     "jest-extended": "^0.11.5",
     "lint-staged": "^11.0.1",
     "microbundle": "^0.13.3",
+    "np": "^7.5.0",
     "prettier": "^2.3.2",
     "rimraf": "^3.0.2",
     "ts-jest": "^27.0.4",
