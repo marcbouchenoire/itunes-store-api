@@ -1,10 +1,10 @@
 {
-  "name": "@bouchenoiremarc/itunes-search-api",
+  "name": "@bouchenoiremarc/itunes-store-api",
   "version": "0.0.0",
-  "description": "Query Apple catalogs using the iTunes Search API.",
+  "description": "Query Apple store catalogs using the iTunes Search API.",
   "author": "Marc Bouchenoire",
   "license": "MIT",
-  "repository": "https://github.com/bouchenoiremarc/itunes-search-api",
+  "repository": "https://github.com/bouchenoiremarc/itunes-store-api",
   "keywords": [
     "geometry",
     "dimensions",
@@ -17,13 +17,13 @@
   ],
   "sideEffects": false,
   "source": "./src/index.ts",
-  "main": "./dist/itunes-search-api.js",
-  "unpkg": "./dist/itunes-search-api.umd.js",
-  "module": "./dist/itunes-search-api.module.js",
+  "main": "./dist/itunes-store-api.js",
+  "unpkg": "./dist/itunes-store-api.umd.js",
+  "module": "./dist/itunes-store-api.module.js",
   "exports": {
     ".": {
-      "require": "./dist/itunes-search-api.js",
-      "import": "./dist/itunes-search-api.modern.js",
+      "require": "./dist/itunes-store-api.js",
+      "import": "./dist/itunes-store-api.modern.js",
       "types": "./dist/index.d.ts"
     }
   },
