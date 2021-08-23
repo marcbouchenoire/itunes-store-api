@@ -1,6 +1,6 @@
 {
   "name": "itunes-store-api",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Query Apple store catalogs using the iTunes Search API.",
   "author": "Marc Bouchenoire",
   "license": "MIT",
