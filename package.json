@@ -6,10 +6,9 @@
   "license": "MIT",
   "repository": "https://github.com/bouchenoiremarc/itunes-store-api",
   "keywords": [
-    "geometry",
-    "dimensions",
-    "layout",
-    "guides"
+    "itunes",
+    "store",
+    "search"
   ],
   "files": [
     "dist",
