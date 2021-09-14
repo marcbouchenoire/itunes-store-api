@@ -54,7 +54,7 @@
     "test": "jest"
   },
   "devDependencies": {
-    "@bouchenoiremarc/eslint-config": "^1.5.1",
+    "@bouchenoiremarc/eslint-config": "^1.6.0",
     "@types/jest": "^27.0.1",
     "@types/node": "^16.4.3",
     "eslint": "^7.30.0",
