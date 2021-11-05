@@ -58,7 +58,7 @@
     "eslint": "^7.30.0",
     "husky": "4.3.8",
     "jest": "^27.0.6",
-    "jest-extended": "^0.11.5",
+    "jest-extended": "^1.1.0",
     "lint-staged": "^11.0.1",
     "microbundle": "^0.13.3",
     "np": "^7.5.0",
