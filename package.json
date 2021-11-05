@@ -39,9 +39,6 @@
       "pre-commit": "lint-staged"
     }
   },
-  "publishConfig": {
-    "access": "public"
-  },
   "scripts": {
     "build": "microbundle --tsconfig tsconfig.build.json",
     "clean": "jest --clearCache && rimraf dist node_modules",
