@@ -1,18 +1,18 @@
 import unfetch from "isomorphic-unfetch"
 import {
-  LookupResponse,
+  AlbumMatch,
+  Entities,
   Lookup,
-  PlainObject,
+  LookupResponse,
+  Match,
+  MatchOptions,
   Media,
   Options,
-  Entities,
+  PlainObject,
+  PodcastMatch,
   SearchOptions,
   SearchResponse,
-  UrlMatch,
-  Match,
-  AlbumMatch,
-  PodcastMatch,
-  MatchOptions
+  UrlMatch
 } from "./types"
 import { encodeURIFormComponent } from "./utils/encode-form-uri-component"
 import { matchGroups } from "./utils/match-groups"

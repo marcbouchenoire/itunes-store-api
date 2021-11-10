@@ -18,8 +18,8 @@ describe("matchGroups", () => {
       /(?<letters>\w+).(?<numbers>\d+)/
     )
 
-    expect(groups.letters).toEqual("abc")
-    expect(groups.numbers).toEqual("123")
+    expect(groups.letters).toBe("abc")
+    expect(groups.numbers).toBe("123")
   })
 
   test("should return an empty object when no groups have been matched", () => {

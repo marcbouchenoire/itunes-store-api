@@ -1,4 +1,5 @@
-import { search, lookup } from "../src"
+import { lookup, search } from "../src"
+import "jest-extended"
 
 describe("search", () => {
   test("should return the expected results", async () => {
@@ -13,7 +14,7 @@ describe("lookup", () => {
   test("should return the expected result", async () => {
     const { resultCount, results } = await lookup("id", 1007596731)
 
-    expect(resultCount).toEqual(1)
+    expect(resultCount).toBe(1)
     expect(results).toBeArrayOfSize(resultCount)
   })
 
@@ -23,7 +24,7 @@ describe("lookup", () => {
       "https://music.apple.com/us/album/saturdays-youth/1007596648"
     )
 
-    expect(resultCount).toEqual(1)
+    expect(resultCount).toBe(1)
     expect(results).toBeArrayOfSize(resultCount)
   })
 })
