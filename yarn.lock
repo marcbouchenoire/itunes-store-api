@@ -1104,6 +1104,11 @@
     eslint-plugin-unicorn "^38.0.1"
     eslint-plugin-unused-imports "^2.0.0"
 
+"@bouchenoiremarc/prettier-config@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@bouchenoiremarc/prettier-config/-/prettier-config-1.1.0.tgz#acc30113056b7bc692668258f3870d1f65ba1ce4"
+  integrity sha512-5kT/iTsrEf80Jmqr/sSWOGgkXTC/HlAYU/fIj2SN+OIA5ILJbhScs8z05zj/XcMUOJW/boa3uxWTBshlX5gF3w==
+
 "@eslint/eslintrc@^1.0.4":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@eslint/eslintrc/-/eslintrc-1.0.4.tgz#dfe0ff7ba270848d10c5add0715e04964c034b31"
