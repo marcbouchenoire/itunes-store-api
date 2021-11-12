@@ -12,21 +12,19 @@
 
 #### Skypack
 
-```html
-<script type="module">
-  import { search, lookup } from "https://cdn.skypack.dev/itunes-store-api"
-</script>
+```javascript
+import { search, lookup } from "https://cdn.skypack.dev/itunes-store-api"
 ```
 
 #### Yarn
 
-```sh
+```bash
 yarn add itunes-store-api
 ```
 
 #### npm
 
-```sh
+```bash
 npm install itunes-store-api
 ```
 
@@ -36,13 +34,13 @@ npm install itunes-store-api
 
 Import `search`.
 
-```tsx
+```typescript
 import { search } from "itunes-store-api"
 ```
 
 Invoke it asynchronously and access results in return.
 
-```tsx
+```typescript
 const { results } = await search("M83")
 
 // results: [Result, Result, Result...]
@@ -52,13 +50,13 @@ const { results } = await search("M83")
 
 Import `lookup`.
 
-```tsx
+```typescript
 import { lookup } from "itunes-store-api"
 ```
 
 Invoke it asynchronously using a lookup type (`"id"`, `"isbn"`, `"upc"`, `"url"`, `"amgAlbumId"`, `"amgArtistId"` or `"amgVideoId"`) and access a result in return.
 
-```tsx
+```typescript
 const { results } = await lookup("id", 1007596731)
 
 // results: [Result]
@@ -90,7 +88,7 @@ Both `search` and `lookup` support a trailing `options` argument.
 
 A two-letter country code where the queried store catalog will be from. Defaults to `"us"`.
 
-```tsx
+```typescript
 await search("Le Fabuleux Destin d'Amélie Poulain", { country: "fr" })
 ```
 
@@ -100,7 +98,7 @@ await search("Le Fabuleux Destin d'Amélie Poulain", { country: "fr" })
 
 Limit the number of results. Defaults to `50`.
 
-```tsx
+```typescript
 await search("C418", { limit: 10 })
 ```
 
@@ -110,7 +108,7 @@ await search("C418", { limit: 10 })
 
 Whether to sort results by popularity (`"popular"`) or recentness (`"recent"`). Defaults to `"popular"`.
 
-```tsx
+```typescript
 await search("Twitter", { sort: "popular" })
 ```
 
@@ -120,7 +118,7 @@ await search("Twitter", { sort: "popular" })
 
 The media type to search for—see [Table 2-1](https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/iTuneSearchAPI/Searching.html). Defaults to `"all"`.
 
-```tsx
+```typescript
 await search("Lost in Translation", { media: "movie" })
 ```
 
@@ -130,7 +128,7 @@ await search("Lost in Translation", { media: "movie" })
 
 The type of results returned, relative to the specified media type—see [Table 2-1](https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/iTuneSearchAPI/Searching.html).
 
-```tsx
+```typescript
 await search("Things", { media: "software", entity: "macSoftware" })
 ```
 
@@ -140,7 +138,7 @@ await search("Things", { media: "software", entity: "macSoftware" })
 
 Which attribute to search for, relative to the specified media type—see [Table 2-2](https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/iTuneSearchAPI/Searching.html).
 
-```tsx
+```typescript
 await search("Greta Gerwig", { entity: "movieArtist", attribute: "actorTerm" })
 ```
 
@@ -150,6 +148,6 @@ await search("Greta Gerwig", { entity: "movieArtist", attribute: "actorTerm" })
 
 Whether or not to include explicit content. Defaults to `true`.
 
-```tsx
+```typescript
 await search("My Beautiful Dark Twisted Fantasy", { explicit: true })
 ```
