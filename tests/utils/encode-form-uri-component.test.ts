@@ -1,12 +1,18 @@
+import * as assert from "uvu/assert"
 import { encodeURIFormComponent } from "../../src/utils/encode-form-uri-component"
-import "jest-extended"
+import { describe } from "../helpers"
 
-describe("encodeURIFormComponent", () => {
-  test("should encode a URI component", () => {
-    expect(encodeURIFormComponent("àáâ")).not.toIncludeMultiple(["à", "á", "â"])
+describe("encodeURIFormComponent", (it) => {
+  it("should encode a URI component", () => {
+    assert.equal(
+      ["à", "á", "â"].some((character) =>
+        encodeURIFormComponent("àáâ").includes(character)
+      ),
+      false
+    )
   })
 
-  test("should encode spaces as +", () => {
-    expect(encodeURIFormComponent("lorem ipsum")).toBe("lorem+ipsum")
+  it("should encode spaces as +", () => {
+    assert.equal(encodeURIFormComponent("lorem ipsum"), "lorem+ipsum")
   })
 })

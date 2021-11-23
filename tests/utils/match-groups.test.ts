@@ -1,4 +1,6 @@
+import * as assert from "uvu/assert"
 import { matchGroups } from "../../src/utils/match-groups"
+import { describe } from "../helpers"
 
 interface ValidMatch {
   letters: string
@@ -9,22 +11,22 @@ interface EmptyMatch {
   dashes: string
 }
 
-describe("matchGroups", () => {
+describe("matchGroups", (it) => {
   const string = "abc 123"
 
-  test("should return an object of all matched groups", () => {
+  it("should return an object of all matched groups", () => {
     const groups = matchGroups<ValidMatch>(
       string,
       /(?<letters>\w+).(?<numbers>\d+)/
     )
 
-    expect(groups.letters).toBe("abc")
-    expect(groups.numbers).toBe("123")
+    assert.equal(groups.letters, "abc")
+    assert.equal(groups.numbers, "123")
   })
 
-  test("should return an empty object when no groups have been matched", () => {
+  it("should return an empty object when no groups have been matched", () => {
     const groups = matchGroups<EmptyMatch>(string, /(?<dashes>-+)/)
 
-    expect(groups).toStrictEqual({})
+    assert.equal(groups, {})
   })
 })

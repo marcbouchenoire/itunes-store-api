@@ -1,30 +1,31 @@
+import * as assert from "uvu/assert"
 import { lookup, search } from "../src"
-import "jest-extended"
+import { describe } from "./helpers"
 
-describe("search", () => {
-  test("should return the expected results", async () => {
+describe("search", (it) => {
+  it("should return the expected results", async () => {
     const { resultCount, results } = await search("M83", { limit: 10 })
 
-    expect(resultCount).toBeNumber()
-    expect(results).toBeArrayOfSize(resultCount)
+    assert.type(resultCount, "number")
+    assert.equal(results?.length, resultCount)
   })
 })
 
-describe("lookup", () => {
-  test("should return the expected result", async () => {
+describe("lookup", (it) => {
+  it("should return the expected result", async () => {
     const { resultCount, results } = await lookup("id", 1007596731)
 
-    expect(resultCount).toBe(1)
-    expect(results).toBeArrayOfSize(resultCount)
+    assert.equal(resultCount, 1)
+    assert.equal(results?.length, resultCount)
   })
 
-  test("should return the expected result given a valid URL", async () => {
+  it("should return the expected result given a valid URL", async () => {
     const { resultCount, results } = await lookup(
       "url",
       "https://music.apple.com/us/album/saturdays-youth/1007596648"
     )
 
-    expect(resultCount).toBe(1)
-    expect(results).toBeArrayOfSize(resultCount)
+    assert.equal(resultCount, 1)
+    assert.equal(results?.length, resultCount)
   })
 })
