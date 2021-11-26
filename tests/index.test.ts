@@ -20,12 +20,74 @@ describe("lookup", (it) => {
   })
 
   it("should return the expected result given a valid URL", async () => {
-    const { resultCount, results } = await lookup(
+    const { resultCount: softwareResultCount, results: softwareResults } =
+      await lookup(
+        "url",
+        "https://apps.apple.com/us/app/letterboxd/id1054271011"
+      )
+    const { resultCount: audiobookResultCount, results: audiobookResults } =
+      await lookup(
+        "url",
+        "https://books.apple.com/gb/audiobook/the-diary-of-a-young-girl/id1440416363"
+      )
+    const { resultCount: bookResultCount, results: bookResults } = await lookup(
       "url",
-      "https://music.apple.com/us/album/saturdays-youth/1007596648"
+      "https://books.apple.com/us/book/the-communist-manifesto/id395544966"
     )
+    const { resultCount: authorResultCount, results: authorResults } =
+      await lookup(
+        "url",
+        "https://books.apple.com/us/author/albert-camus/id57528162"
+      )
+    const { resultCount: songResultCount, results: songResults } = await lookup(
+      "url",
+      "https://music.apple.com/us/album/kim-jessie/1007596648?i=1007596731"
+    )
+    const { resultCount: albumResultCount, results: albumResults } =
+      await lookup(
+        "url",
+        "https://music.apple.com/us/album/wolfgang-amadeus-phoenix/1450828963"
+      )
+    const { resultCount: musicVideoResultCount, results: musicVideoResults } =
+      await lookup(
+        "url",
+        "https://music.apple.com/us/music-video/daydreaming/1441607175"
+      )
+    const { resultCount: artistResultCount, results: artistResults } =
+      await lookup(
+        "url",
+        "https://music.apple.com/us/artist/a-g-cook/744253464"
+      )
+    const { resultCount: podcastResultCount, results: podcastResults } =
+      await lookup(
+        "url",
+        "https://podcasts.apple.com/us/podcast/panic-podcast/id1495115716"
+      )
 
-    assert.equal(resultCount, 1)
-    assert.equal(results?.length, resultCount)
+    assert.equal(softwareResultCount, 1)
+    assert.equal(audiobookResultCount, 1)
+    assert.equal(bookResultCount, 1)
+    assert.equal(authorResultCount, 1)
+    assert.equal(songResultCount, 1)
+    assert.equal(albumResultCount, 1)
+    assert.equal(musicVideoResultCount, 1)
+    assert.equal(artistResultCount, 1)
+    assert.equal(podcastResultCount, 1)
+
+    assert.equal(softwareResults?.length, softwareResultCount)
+    assert.equal(audiobookResults?.length, audiobookResultCount)
+    assert.equal(bookResults?.length, bookResultCount)
+    assert.equal(authorResults?.length, authorResultCount)
+    assert.equal(songResults?.length, songResultCount)
+    assert.equal(albumResults?.length, albumResultCount)
+    assert.equal(musicVideoResults?.length, musicVideoResultCount)
+    assert.equal(artistResults?.length, artistResultCount)
+    assert.equal(podcastResults?.length, podcastResultCount)
+  })
+
+  it("should return empty results given an invalid URL", async () => {
+    const { resultCount } = await lookup("url", "https://www.apple.com/")
+
+    assert.equal(resultCount, 0)
   })
 })

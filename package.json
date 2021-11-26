@@ -60,18 +60,18 @@
     "prepublishOnly": "yarn build",
     "release": "yarn login && np",
     "test": "uvu --require tsm tests",
-    "test:coverage": "c8 --include=src yarn test && c8 report --reporter=lcov"
+    "test:coverage": "nyc --temp-dir=.nyc.log --include=src yarn test && nyc report --temp-dir=.nyc.log --reporter=lcov"
   },
   "devDependencies": {
     "@bouchenoiremarc/eslint-config": "^2.2.1",
     "@bouchenoiremarc/prettier-config": "^1.1.0",
     "@types/node": "^16.11.9",
-    "c8": "^7.10.0",
     "eslint": "^8.3.0",
     "husky": "4.3.8",
     "lint-staged": "^12.1.2",
     "microbundle": "^0.14.2",
     "np": "^7.6.0",
+    "nyc": "^15.1.0",
     "prettier": "^2.4.1",
     "tsatsiki": "^1.0.1",
     "tsm": "^2.1.4",
