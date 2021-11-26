@@ -66,19 +66,17 @@ const { results } = await lookup("id", 1007596731)
 
 A variety of store catalog URLs is supported when using the `"url"` lookup type.
 
-| Entity          | Example                                                                                                          |
-| --------------- | ---------------------------------------------------------------------------------------------------------------- |
-| Software        | https://apps.apple.com/us/app/letterboxd/id1054271011                                                            |
-| Audiobook       | https://books.apple.com/gb/audiobook/the-diary-of-a-young-girl/id1440416363                                      |
-| Book            | https://books.apple.com/us/book/the-communist-manifesto/id395544966                                              |
-| Author          | https://books.apple.com/us/author/albert-camus/id57528162                                                        |
-| Song            | https://music.apple.com/us/album/kim-jessie/1007596648?i=1007596731                                              |
-| Album           | https://music.apple.com/us/album/wolfgang-amadeus-phoenix/1450828963                                             |
-| Music Video     | https://music.apple.com/us/music-video/daydreaming/1441607175                                                    |
-| Artist          | https://music.apple.com/us/artist/a-g-cook/744253464                                                             |
-| Podcast         | https://podcasts.apple.com/us/podcast/panic-podcast/id1495115716                                                 |
-| Podcast Episode | https://podcasts.apple.com/us/podcast/168-auto-goats-feat-koen-bok-and-jorn-van-dijk/id947191070?i=1000376864263 |
-| Podcast Channel | https://podcasts.apple.com/us/channel/france-culture/id6442484175                                                |
+| Entity      | Example                                                                     |
+| ----------- | --------------------------------------------------------------------------- |
+| Software    | https://apps.apple.com/us/app/letterboxd/id1054271011                       |
+| Audiobook   | https://books.apple.com/gb/audiobook/the-diary-of-a-young-girl/id1440416363 |
+| Book        | https://books.apple.com/us/book/the-communist-manifesto/id395544966         |
+| Author      | https://books.apple.com/us/author/albert-camus/id57528162                   |
+| Song        | https://music.apple.com/us/album/kim-jessie/1007596648?i=1007596731         |
+| Album       | https://music.apple.com/us/album/wolfgang-amadeus-phoenix/1450828963        |
+| Music Video | https://music.apple.com/us/music-video/daydreaming/1441607175               |
+| Artist      | https://music.apple.com/us/artist/a-g-cook/744253464                        |
+| Podcast     | https://podcasts.apple.com/us/podcast/panic-podcast/id1495115716            |
 
 ## Options
 

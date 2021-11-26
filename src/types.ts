@@ -41,18 +41,12 @@ export interface UrlMatch {
     | "audiobook"
     | "author"
     | "book"
-    | "channel"
     | "music-video"
     | "podcast"
   media: "apps" | "books" | "music" | "podcasts"
 }
 
 export interface Match {
-  id: string
-}
-
-export interface PodcastMatch {
-  episodeId: string
   id: string
 }
 

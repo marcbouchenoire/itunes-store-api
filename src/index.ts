@@ -9,7 +9,6 @@ import {
   Media,
   Options,
   PlainObject,
-  PodcastMatch,
   SearchOptions,
   SearchResponse,
   UrlMatch
@@ -32,10 +31,8 @@ const bookRegex =
   /^https?:\/\/books\.apple\.com\/[^/]*\/book\/[^/]*\/id(?<id>\d+)/
 const musicVideoRegex =
   /^https?:\/\/music\.apple\.com\/[^/]*\/music-video\/[^/]*\/(?<id>\d+)/
-const podcastChannelRegex =
-  /^https?:\/\/podcasts\.apple\.com\/[^/]*\/channel\/[^/]*\/id(?<id>\d+)/
 const podcastRegex =
-  /^https?:\/\/podcasts\.apple\.com\/[^/]*\/podcast\/[^/]*\/id(?<id>\d+)(?:\?.*i=(?<episodeId>\d+))?/
+  /^https?:\/\/podcasts\.apple\.com\/[^/]*\/podcast\/[^/]*\/id(?<id>\d+)/
 const albumRegex =
   /^https?:\/\/music\.apple\.com\/[^/]*\/album\/[^/]*\/(?<id>\d+)(?:\?.*i=(?<trackId>\d+))?/
 
@@ -69,10 +66,6 @@ async function fetch<T = PlainObject>(
 function match(url: string): Partial<MatchOptions> {
   const { country, entity, media } = matchGroups<UrlMatch>(url, regex)
 
-  if (!(country && entity && media)) {
-    return {}
-  }
-
   function getOptions(id?: string): Partial<MatchOptions> {
     return id ? { country, id: Number(id) } : {}
   }
@@ -95,16 +88,12 @@ function match(url: string): Partial<MatchOptions> {
     return getMatchedOptions(artistRegex)
   } else if (media === "music" && entity === "music-video") {
     return getMatchedOptions(musicVideoRegex)
-  } else if (media === "podcasts" && entity === "channel") {
-    return getMatchedOptions(podcastChannelRegex)
+  } else if (media === "podcasts" && entity === "podcast") {
+    return getMatchedOptions(podcastRegex)
   } else if (media === "music" && entity === "album") {
     const { id, trackId } = matchGroups<AlbumMatch>(url, albumRegex)
 
     return trackId ? getOptions(trackId) : getOptions(id)
-  } else if (media === "podcasts" && entity === "podcast") {
-    const { id, episodeId } = matchGroups<PodcastMatch>(url, podcastRegex)
-
-    return episodeId ? getOptions(episodeId) : getOptions(id)
   } else {
     return {}
   }
