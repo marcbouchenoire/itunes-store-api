@@ -1,4 +1,3 @@
-import unfetch from "isomorphic-unfetch"
 import {
   AlbumMatch,
   Entities,
@@ -40,9 +39,9 @@ const defaultOptions: Partial<Options> = {
   country: "us"
 }
 
-async function fetch<T = PlainObject>(
+async function query<T = PlainObject>(
   endpoint: string,
-  parameters: Record<string, boolean | number | string> = {}
+  parameters: Record<string, boolean | number | string>
 ): Promise<T> {
   const query = new URLSearchParams()
 
@@ -51,7 +50,7 @@ async function fetch<T = PlainObject>(
   }
 
   try {
-    const response = await unfetch(`${API}/${endpoint}?${query.toString()}`)
+    const response = await fetch(`${API}/${endpoint}?${query.toString()}`)
 
     if (response.ok) {
       return await response.json()
@@ -105,10 +104,10 @@ export async function search<M extends Media, E extends Entities[M]>(
 ): Promise<SearchResponse<M, E>> {
   const resolvedOptions = { ...defaultOptions, ...options }
 
-  return await fetch<SearchResponse<M, E>>("search", {
+  return await query<SearchResponse<M, E>>("search", {
     ...resolvedOptions,
     explicit: resolvedOptions.explicit ? "Yes" : "No",
-    term: encodeURIFormComponent(search)
+    term: search
   })
 }
 
@@ -132,7 +131,7 @@ export async function lookup(
     type === "url" ? match(String(value)) : { [type]: value }
   ) as Record<Exclude<Lookup, "url">, number | string>
 
-  return await fetch<LookupResponse>("lookup", {
+  return await query<LookupResponse>("lookup", {
     ...resolvedOptions,
     ...resolvedValue
   })

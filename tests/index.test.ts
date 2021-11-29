@@ -1,22 +1,43 @@
+import { restoreAll, spyOn } from "nanospy"
+import fetch from "node-fetch"
 import * as assert from "uvu/assert"
 import { lookup, search } from "../src"
 import { describe } from "./helpers"
 
 describe("search", (it) => {
   it("should return the expected results", async () => {
-    const { resultCount, results } = await search("M83", { limit: 10 })
+    spyOn(global, "fetch", fetch as typeof global["fetch"])
+
+    const { resultCount, results } = await search("M83")
+    const { resultCount: explicitResultCount, results: explicitResults } =
+      await search("My Beautiful Dark Twisted Fantasy", { explicit: true })
 
     assert.type(resultCount, "number")
-    assert.equal(results?.length, resultCount)
+    assert.equal(results.length, resultCount)
+    assert.equal(results.length > 0, true)
+
+    assert.type(explicitResultCount, "number")
+    assert.equal(explicitResults.length, explicitResultCount)
+    assert.equal(explicitResults.length > 0, true)
+
+    restoreAll()
   })
 })
 
 describe("lookup", (it) => {
+  it.before.each(() => {
+    spyOn(global, "fetch", fetch as typeof global["fetch"])
+  })
+
+  it.after.each(() => {
+    restoreAll()
+  })
+
   it("should return the expected result", async () => {
     const { resultCount, results } = await lookup("id", 1007596731)
 
     assert.equal(resultCount, 1)
-    assert.equal(results?.length, resultCount)
+    assert.equal(results.length, resultCount)
   })
 
   it("should return the expected result given a valid URL", async () => {
@@ -74,20 +95,48 @@ describe("lookup", (it) => {
     assert.equal(artistResultCount, 1)
     assert.equal(podcastResultCount, 1)
 
-    assert.equal(softwareResults?.length, softwareResultCount)
-    assert.equal(audiobookResults?.length, audiobookResultCount)
-    assert.equal(bookResults?.length, bookResultCount)
-    assert.equal(authorResults?.length, authorResultCount)
-    assert.equal(songResults?.length, songResultCount)
-    assert.equal(albumResults?.length, albumResultCount)
-    assert.equal(musicVideoResults?.length, musicVideoResultCount)
-    assert.equal(artistResults?.length, artistResultCount)
-    assert.equal(podcastResults?.length, podcastResultCount)
+    assert.equal(softwareResults.length, softwareResultCount)
+    assert.equal(audiobookResults.length, audiobookResultCount)
+    assert.equal(bookResults.length, bookResultCount)
+    assert.equal(authorResults.length, authorResultCount)
+    assert.equal(songResults.length, songResultCount)
+    assert.equal(albumResults.length, albumResultCount)
+    assert.equal(musicVideoResults.length, musicVideoResultCount)
+    assert.equal(artistResults.length, artistResultCount)
+    assert.equal(podcastResults.length, podcastResultCount)
   })
 
   it("should return empty results given an invalid URL", async () => {
     const { resultCount } = await lookup("url", "https://www.apple.com/")
+    const { resultCount: resultCountMissingId } = await lookup(
+      "url",
+      "https://music.apple.com/us/album/kim-jessie"
+    )
 
     assert.equal(resultCount, 0)
+    assert.equal(resultCountMissingId, 0)
+  })
+})
+
+describe("search and lookup", (it) => {
+  it("should throw when fetch is not supported", async () => {
+    try {
+      await lookup("id", 1007596731)
+      assert.unreachable()
+    } catch (error) {
+      assert.instance(error, Error)
+    }
+  })
+
+  it("should throw when encountering a network error", async () => {
+    spyOn(global, "fetch", (async () =>
+      fetch("https://httpstat.us/500")) as typeof global["fetch"])
+
+    try {
+      await lookup("id", 1007596731)
+      assert.unreachable()
+    } catch (error) {
+      assert.instance(error, Error)
+    }
   })
 })
