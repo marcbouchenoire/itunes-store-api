@@ -2,7 +2,17 @@
 
 💿 Query Apple store catalogs using the iTunes Search API.
 
-[![build](https://github.com/bouchenoiremarc/itunes-store-api/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/bouchenoiremarc/itunes-store-api/actions/workflows/ci.yml) [![npm](https://img.shields.io/npm/v/itunes-store-api?color=%230cf)](https://www.npmjs.com/package/itunes-store-api) [![gzipped](https://img.shields.io/bundlephobia/minzip/itunes-store-api?label=gzipped&color=%2385f)](https://www.npmjs.com/package/itunes-store-api) [![license](https://img.shields.io/github/license/bouchenoiremarc/itunes-store-api?color=%23e4b)](https://github.com/bouchenoiremarc/itunes-store-api/blob/main/LICENSE)
+[![build](https://img.shields.io/github/workflow/status/bouchenoiremarc/itunes-store-api/CI)](https://github.com/bouchenoiremarc/itunes-store-api/actions/workflows/ci.yml)
+[![npm](https://img.shields.io/npm/v/itunes-store-api?color=%230cf)](https://www.npmjs.com/package/itunes-store-api)
+[![size](https://img.shields.io/bundlephobia/minzip/itunes-store-api?label=size&color=%2385f)](https://bundlephobia.com/package/itunes-store-api)
+[![coverage](https://img.shields.io/codecov/c/github/bouchenoiremarc/itunes-store-api?color=%23e4b)](https://codecov.io/gh/bouchenoiremarc/itunes-store-api)
+[![license](https://img.shields.io/github/license/bouchenoiremarc/itunes-store-api?color=%23f81)](https://github.com/bouchenoiremarc/itunes-store-api/blob/main/LICENSE)
+
+- 🗜️ **Small**: Tree-shakeable and around **1.4 kB** on [modern platforms](https://bundle.js.org/?bundle&q=itunes-store-api)
+- [🔎 **URLs**](#url): Supports looking items up from their store URLs
+- 🧪 **Reliable**: Fully tested with [100% code coverage](https://codecov.io/gh/bouchenoiremarc/itunes-store-api)
+- 📦 **Typed**: Written in [TypeScript](https://www.typescriptlang.org/) and includes definitions out-of-the-box
+- 💨 **Zero dependencies**
 
 ## Introduction
 
@@ -64,7 +74,7 @@ const { results } = await lookup("id", 1007596731)
 
 ##### `"url"`
 
-A variety of store catalog URLs is supported when using the `"url"` lookup type.
+A variety of store catalog URLs are supported when using the `"url"` lookup type.
 
 | Entity      | Example                                                                     |
 | ----------- | --------------------------------------------------------------------------- |
