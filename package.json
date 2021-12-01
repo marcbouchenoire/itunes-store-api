@@ -4,7 +4,7 @@
   "description": "Query Apple store catalogs using the iTunes Search API.",
   "author": "Marc Bouchenoire",
   "license": "MIT",
-  "repository": "https://github.com/bouchenoiremarc/itunes-store-api",
+  "repository": "https://github.com/marcbouchenoire/itunes-store-api",
   "keywords": [
     "itunes",
     "store",
@@ -32,7 +32,7 @@
     "./package.json": "./package.json"
   },
   "types": "./dist/index.d.ts",
-  "prettier": "@bouchenoiremarc/prettier-config",
+  "prettier": "@marcbouchenoire/prettier-config",
   "lint-staged": {
     "**/*.mjs": [
       "eslint --fix",
@@ -65,8 +65,8 @@
     "test:coverage": "nyc --temp-dir=.nyc.log --include=src yarn test && nyc report --temp-dir=.nyc.log --reporter=lcov"
   },
   "devDependencies": {
-    "@bouchenoiremarc/eslint-config": "^2.2.1",
-    "@bouchenoiremarc/prettier-config": "^1.1.0",
+    "@marcbouchenoire/eslint-config": "^2.2.1",
+    "@marcbouchenoire/prettier-config": "^1.1.0",
     "@types/node": "^16.11.9",
     "eslint": "^8.3.0",
     "husky": "4.3.8",

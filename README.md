@@ -2,15 +2,15 @@
 
 💿 Query Apple store catalogs using the iTunes Search API.
 
-[![build](https://img.shields.io/github/workflow/status/bouchenoiremarc/itunes-store-api/CI)](https://github.com/bouchenoiremarc/itunes-store-api/actions/workflows/ci.yml)
+[![build](https://img.shields.io/github/workflow/status/marcbouchenoire/itunes-store-api/CI)](https://github.com/marcbouchenoire/itunes-store-api/actions/workflows/ci.yml)
 [![npm](https://img.shields.io/npm/v/itunes-store-api?color=%230cf)](https://www.npmjs.com/package/itunes-store-api)
 [![size](https://img.shields.io/bundlephobia/minzip/itunes-store-api?label=size&color=%2385f)](https://bundlephobia.com/package/itunes-store-api)
-[![coverage](https://img.shields.io/codecov/c/github/bouchenoiremarc/itunes-store-api?color=%23e4b)](https://codecov.io/gh/bouchenoiremarc/itunes-store-api)
-[![license](https://img.shields.io/github/license/bouchenoiremarc/itunes-store-api?color=%23f81)](https://github.com/bouchenoiremarc/itunes-store-api/blob/main/LICENSE)
+[![coverage](https://img.shields.io/codecov/c/github/marcbouchenoire/itunes-store-api?color=%23e4b)](https://codecov.io/gh/marcbouchenoire/itunes-store-api)
+[![license](https://img.shields.io/github/license/marcbouchenoire/itunes-store-api?color=%23f81)](https://github.com/marcbouchenoire/itunes-store-api/blob/main/LICENSE)
 
 - 🗜️ **Small**: Tree-shakeable and around **1.4 kB** on [modern platforms](https://bundle.js.org/?bundle&q=itunes-store-api)
 - [🔎 **URLs**](#url): Supports looking items up from their store URLs
-- 🧪 **Reliable**: Fully tested with [100% code coverage](https://codecov.io/gh/bouchenoiremarc/itunes-store-api)
+- 🧪 **Reliable**: Fully tested with [100% code coverage](https://codecov.io/gh/marcbouchenoire/itunes-store-api)
 - 📦 **Typed**: Written in [TypeScript](https://www.typescriptlang.org/) and includes definitions out-of-the-box
 - 💨 **Zero dependencies**
 
