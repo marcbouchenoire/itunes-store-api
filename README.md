@@ -8,7 +8,7 @@
 [![coverage](https://img.shields.io/codecov/c/github/marcbouchenoire/itunes-store-api?color=%23e4b)](https://codecov.io/gh/marcbouchenoire/itunes-store-api)
 [![license](https://img.shields.io/github/license/marcbouchenoire/itunes-store-api?color=%23f81)](https://github.com/marcbouchenoire/itunes-store-api/blob/main/LICENSE)
 
-- 🗜️ **Small**: Tree-shakeable and around **1.4 kB** on [modern platforms](https://bundle.js.org/?bundle&q=itunes-store-api)
+- 🗜️ **Small**: Tree-shakeable and around **1.4 kB** on modern platforms
 - [🔎 **URLs**](#url): Supports looking items up from their store URLs
 - 🧪 **Reliable**: Fully tested with [100% code coverage](https://codecov.io/gh/marcbouchenoire/itunes-store-api)
 - 📦 **Typed**: Written in [TypeScript](https://www.typescriptlang.org/) and includes definitions out-of-the-box
