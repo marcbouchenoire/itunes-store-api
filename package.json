@@ -67,7 +67,6 @@
   "devDependencies": {
     "@marcbouchenoire/eslint-config": "^2.2.1",
     "@marcbouchenoire/prettier-config": "^1.1.0",
-    "@types/node": "^16.11.9",
     "eslint": "^8.3.0",
     "husky": "4.3.8",
     "microbundle": "^0.14.2",
