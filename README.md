@@ -154,7 +154,7 @@ await search("Greta Gerwig", { entity: "movieArtist", attribute: "actorTerm" })
 
 > Only available for `search`.
 
-Whether or not to include explicit content. Defaults to `true`.
+Whether to include explicit content. Defaults to `true`.
 
 ```typescript
 await search("My Beautiful Dark Twisted Fantasy", { explicit: true })
