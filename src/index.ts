@@ -109,7 +109,7 @@ function parse(url: string): Partial<ParseOptions> {
   }
 }
 
-/**.
+/**
  * Search within Apple's various store catalogs.
  *
  * @param search - A string to search for.
@@ -146,7 +146,7 @@ export async function search<M extends Media, E extends Entities[M]>(
   })
 }
 
-/**.
+/**
  * Look for a specific result within Apple's various store catalogs.
  *
  * @param type - The type of value to look for.
