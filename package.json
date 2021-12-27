@@ -65,7 +65,7 @@
     "test:coverage": "nyc --temp-dir=.nyc.log --include=src yarn test && nyc report --temp-dir=.nyc.log --reporter=lcov"
   },
   "devDependencies": {
-    "@marcbouchenoire/eslint-config": "^2.4.1",
+    "@marcbouchenoire/eslint-config": "^2.4.2",
     "@marcbouchenoire/prettier-config": "^1.1.0",
     "eslint": "^8.5.0",
     "husky": "4.3.8",
