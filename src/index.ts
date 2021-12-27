@@ -4,9 +4,9 @@ import {
   Lookup,
   LookupResponse,
   Match,
-  MatchOptions,
   Media,
   Options,
+  ParseOptions,
   PlainObject,
   SearchOptions,
   SearchResponse,
@@ -39,6 +39,12 @@ const defaultOptions: Partial<Options> = {
   country: "us"
 }
 
+/**
+ * Query an endpoint from the iTunes Store API.
+ *
+ * @param endpoint - The API endpoint to query.
+ * @param parameters - An object of URL parameters.
+ */
 async function query<T = PlainObject>(
   endpoint: string,
   parameters: Record<string, boolean | number | string>
@@ -62,14 +68,19 @@ async function query<T = PlainObject>(
   }
 }
 
-function match(url: string): Partial<MatchOptions> {
+/**
+ * Parse and match a store catalog URL.
+ *
+ * @param url - The URL to parse and match.
+ */
+function parse(url: string): Partial<ParseOptions> {
   const { country, entity, media } = matchGroups<UrlMatch>(url, regex)
 
-  function getOptions(id?: string): Partial<MatchOptions> {
+  function getOptions(id?: string): Partial<ParseOptions> {
     return id ? { country, id: Number(id) } : {}
   }
 
-  function getMatchedOptions(regex: RegExp): Partial<MatchOptions> {
+  function getMatchedOptions(regex: RegExp): Partial<ParseOptions> {
     const { id } = matchGroups<Match>(url, regex)
 
     return getOptions(id)
@@ -102,7 +113,7 @@ function match(url: string): Partial<MatchOptions> {
  * Search within Apple's various store catalogs.
  *
  * @param search - A string to search for.
- * @param [options] - An optional set of options.
+ * @param [options] - An optional set of settings.
  * @param [options.attribute] - Which attribute to search for, relative to the specified media type.
  * @param [options.country] - A two-letter country code where the queried store catalog will be from.
  * @param [options.entity] - The type of results returned, relative to the specified media type.
@@ -140,7 +151,7 @@ export async function search<M extends Media, E extends Entities[M]>(
  *
  * @param type - The type of value to look for.
  * @param value - The value to look for.
- * @param [options] - An optional set of options.
+ * @param [options] - An optional set of settings.
  * @param [options.country] - A two-letter country code where the queried store catalog will be from.
  * @returns A promise fulfilling into the fetched results.
  *
@@ -172,7 +183,7 @@ export async function lookup(
 ): Promise<LookupResponse> {
   const resolvedOptions = { ...defaultOptions, ...options }
   const resolvedValue = (
-    type === "url" ? match(String(value)) : { [type]: value }
+    type === "url" ? parse(String(value)) : { [type]: value }
   ) as Record<Exclude<Lookup, "url">, number | string>
 
   return await query<LookupResponse>("lookup", {

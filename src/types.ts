@@ -1,16 +1,42 @@
 export type PlainObject<T = unknown> = Record<string, T>
 
 export interface Options {
+  /**
+   * A two-letter country code where the queried store catalog will be from.
+   */
   country: Country
 }
 
 export interface SearchOptions<M extends Media, E extends Entities[M] = never>
   extends Options {
+  /**
+   * Which attribute to search for, relative to the specified media type.
+   */
   attribute: Attributes[M]
+
+  /**
+   * The type of results returned, relative to the specified media type.
+   */
   entity: E
+
+  /**
+   * Whether to include explicit content.
+   */
   explicit: boolean
+
+  /**
+   * Limit the number of results.
+   */
   limit: number
+
+  /**
+   * The media type to search for.
+   */
   media: M
+
+  /**
+   * Whether to sort results by popularity or recentness.
+   */
   sort: Sort
 }
 
@@ -18,22 +44,50 @@ export interface SearchResponse<
   M extends Media,
   E extends Entities[M] = never
 > {
+  /**
+   * The number of results.
+   */
   resultCount: number
+
+  /**
+   * An array of results.
+   */
   results: (E extends undefined ? Results[Entities[M]] : Results[E])[]
 }
 
 export interface LookupResponse {
+  /**
+   * The number of results.
+   */
   resultCount: 0 | 1
+
+  /**
+   * An array of results.
+   */
   results: [] | [Results[keyof Results]]
 }
 
-export interface MatchOptions {
+export interface ParseOptions {
+  /**
+   * The parsed catalog's country code.
+   */
   country: Country
+
+  /**
+   * The parsed ID.
+   */
   id: number
 }
 
 export interface UrlMatch {
+  /**
+   * The matched catalog's country code.
+   */
   country: Country
+
+  /**
+   * The matched result type.
+   */
   entity:
     | "album"
     | "app"
@@ -43,16 +97,30 @@ export interface UrlMatch {
     | "book"
     | "music-video"
     | "podcast"
+
+  /**
+   * The matched media type.
+   */
   media: "apps" | "books" | "music" | "podcasts"
 }
 
 export interface Match {
+  /**
+   * The matched ID.
+   */
   id: string
 }
 
 export interface AlbumMatch {
+  /**
+   * The matched album ID.
+   */
   id: string
-  trackId: string
+
+  /**
+   * A specific track ID from the matched album.
+   */
+  trackId?: string
 }
 
 export type Sort = "popular" | "recent"
@@ -76,6 +144,268 @@ export type Media =
   | "shortFilm"
   | "software"
   | "tvShow"
+
+type Explicitness = "cleaned" | "explicit" | "notExplicit"
+
+type Country =
+  | "ad"
+  | "ae"
+  | "af"
+  | "ag"
+  | "ai"
+  | "al"
+  | "am"
+  | "an"
+  | "ao"
+  | "aq"
+  | "ar"
+  | "as"
+  | "at"
+  | "au"
+  | "aw"
+  | "az"
+  | "ba"
+  | "bb"
+  | "bd"
+  | "be"
+  | "bf"
+  | "bg"
+  | "bh"
+  | "bi"
+  | "bj"
+  | "bm"
+  | "bn"
+  | "bn"
+  | "bo"
+  | "bo"
+  | "br"
+  | "bs"
+  | "bt"
+  | "bv"
+  | "bw"
+  | "by"
+  | "bz"
+  | "ca"
+  | "cc"
+  | "cd"
+  | "cf"
+  | "cg"
+  | "ch"
+  | "ci"
+  | "ci"
+  | "ck"
+  | "cl"
+  | "cm"
+  | "cn"
+  | "co"
+  | "cr"
+  | "cu"
+  | "cv"
+  | "cx"
+  | "cy"
+  | "cz"
+  | "de"
+  | "dj"
+  | "dk"
+  | "dm"
+  | "do"
+  | "dz"
+  | "ec"
+  | "ee"
+  | "eg"
+  | "eh"
+  | "er"
+  | "es"
+  | "et"
+  | "fi"
+  | "fj"
+  | "fk"
+  | "fm"
+  | "fo"
+  | "fr"
+  | "ga"
+  | "gb"
+  | "gd"
+  | "ge"
+  | "gf"
+  | "gg"
+  | "gh"
+  | "gi"
+  | "gl"
+  | "gm"
+  | "gn"
+  | "gp"
+  | "gq"
+  | "gr"
+  | "gs"
+  | "gt"
+  | "gu"
+  | "gw"
+  | "gy"
+  | "hk"
+  | "hm"
+  | "hn"
+  | "hr"
+  | "ht"
+  | "hu"
+  | "id"
+  | "ie"
+  | "il"
+  | "im"
+  | "in"
+  | "io"
+  | "iq"
+  | "ir"
+  | "is"
+  | "it"
+  | "je"
+  | "jm"
+  | "jo"
+  | "jp"
+  | "ke"
+  | "kg"
+  | "kh"
+  | "ki"
+  | "km"
+  | "kn"
+  | "kp"
+  | "kr"
+  | "kr"
+  | "kw"
+  | "ky"
+  | "kz"
+  | "la"
+  | "lb"
+  | "lc"
+  | "li"
+  | "lk"
+  | "lr"
+  | "ls"
+  | "lt"
+  | "lu"
+  | "lv"
+  | "ly"
+  | "ly"
+  | "ma"
+  | "mc"
+  | "md"
+  | "me"
+  | "mg"
+  | "mh"
+  | "mk"
+  | "ml"
+  | "mm"
+  | "mm"
+  | "mn"
+  | "mo"
+  | "mp"
+  | "mq"
+  | "mr"
+  | "ms"
+  | "mt"
+  | "mu"
+  | "mv"
+  | "mw"
+  | "mx"
+  | "my"
+  | "mz"
+  | "na"
+  | "nc"
+  | "ne"
+  | "nf"
+  | "ng"
+  | "ni"
+  | "nl"
+  | "no"
+  | "np"
+  | "nr"
+  | "nu"
+  | "nz"
+  | "om"
+  | "pa"
+  | "pe"
+  | "pf"
+  | "pg"
+  | "ph"
+  | "pk"
+  | "pl"
+  | "pm"
+  | "pn"
+  | "pr"
+  | "ps"
+  | "pt"
+  | "pw"
+  | "py"
+  | "qa"
+  | "re"
+  | "ro"
+  | "rs"
+  | "ru"
+  | "ru"
+  | "rw"
+  | "sa"
+  | "sb"
+  | "sc"
+  | "sd"
+  | "se"
+  | "sg"
+  | "sh"
+  | "si"
+  | "sj"
+  | "sk"
+  | "sl"
+  | "sm"
+  | "sn"
+  | "so"
+  | "sr"
+  | "ss"
+  | "st"
+  | "sv"
+  | "sy"
+  | "sz"
+  | "tc"
+  | "td"
+  | "tf"
+  | "tg"
+  | "th"
+  | "tj"
+  | "tk"
+  | "tl"
+  | "tm"
+  | "tn"
+  | "to"
+  | "tr"
+  | "tt"
+  | "tv"
+  | "tw"
+  | "tw"
+  | "tz"
+  | "ua"
+  | "ug"
+  | "um"
+  | "us"
+  | "uy"
+  | "uz"
+  | "va"
+  | "vc"
+  | "vc"
+  | "vc"
+  | "ve"
+  | "ve"
+  | "vg"
+  | "vi"
+  | "vn"
+  | "vn"
+  | "vu"
+  | "wf"
+  | "ws"
+  | "ye"
+  | "yt"
+  | "za"
+  | "zm"
+  | "zw"
+
+/* eslint-disable jsdoc/require-jsdoc */
 
 export interface Entities {
   all: EntityAll
@@ -509,263 +839,3 @@ interface ResultMovie
   trackRentalPrice: number
   trackTimeMillis: number
 }
-
-type Explicitness = "cleaned" | "explicit" | "notExplicit"
-
-type Country =
-  | "ad"
-  | "ae"
-  | "af"
-  | "ag"
-  | "ai"
-  | "al"
-  | "am"
-  | "an"
-  | "ao"
-  | "aq"
-  | "ar"
-  | "as"
-  | "at"
-  | "au"
-  | "aw"
-  | "az"
-  | "ba"
-  | "bb"
-  | "bd"
-  | "be"
-  | "bf"
-  | "bg"
-  | "bh"
-  | "bi"
-  | "bj"
-  | "bm"
-  | "bn"
-  | "bn"
-  | "bo"
-  | "bo"
-  | "br"
-  | "bs"
-  | "bt"
-  | "bv"
-  | "bw"
-  | "by"
-  | "bz"
-  | "ca"
-  | "cc"
-  | "cd"
-  | "cf"
-  | "cg"
-  | "ch"
-  | "ci"
-  | "ci"
-  | "ck"
-  | "cl"
-  | "cm"
-  | "cn"
-  | "co"
-  | "cr"
-  | "cu"
-  | "cv"
-  | "cx"
-  | "cy"
-  | "cz"
-  | "de"
-  | "dj"
-  | "dk"
-  | "dm"
-  | "do"
-  | "dz"
-  | "ec"
-  | "ee"
-  | "eg"
-  | "eh"
-  | "er"
-  | "es"
-  | "et"
-  | "fi"
-  | "fj"
-  | "fk"
-  | "fm"
-  | "fo"
-  | "fr"
-  | "ga"
-  | "gb"
-  | "gd"
-  | "ge"
-  | "gf"
-  | "gg"
-  | "gh"
-  | "gi"
-  | "gl"
-  | "gm"
-  | "gn"
-  | "gp"
-  | "gq"
-  | "gr"
-  | "gs"
-  | "gt"
-  | "gu"
-  | "gw"
-  | "gy"
-  | "hk"
-  | "hm"
-  | "hn"
-  | "hr"
-  | "ht"
-  | "hu"
-  | "id"
-  | "ie"
-  | "il"
-  | "im"
-  | "in"
-  | "io"
-  | "iq"
-  | "ir"
-  | "is"
-  | "it"
-  | "je"
-  | "jm"
-  | "jo"
-  | "jp"
-  | "ke"
-  | "kg"
-  | "kh"
-  | "ki"
-  | "km"
-  | "kn"
-  | "kp"
-  | "kr"
-  | "kr"
-  | "kw"
-  | "ky"
-  | "kz"
-  | "la"
-  | "lb"
-  | "lc"
-  | "li"
-  | "lk"
-  | "lr"
-  | "ls"
-  | "lt"
-  | "lu"
-  | "lv"
-  | "ly"
-  | "ly"
-  | "ma"
-  | "mc"
-  | "md"
-  | "me"
-  | "mg"
-  | "mh"
-  | "mk"
-  | "ml"
-  | "mm"
-  | "mm"
-  | "mn"
-  | "mo"
-  | "mp"
-  | "mq"
-  | "mr"
-  | "ms"
-  | "mt"
-  | "mu"
-  | "mv"
-  | "mw"
-  | "mx"
-  | "my"
-  | "mz"
-  | "na"
-  | "nc"
-  | "ne"
-  | "nf"
-  | "ng"
-  | "ni"
-  | "nl"
-  | "no"
-  | "np"
-  | "nr"
-  | "nu"
-  | "nz"
-  | "om"
-  | "pa"
-  | "pe"
-  | "pf"
-  | "pg"
-  | "ph"
-  | "pk"
-  | "pl"
-  | "pm"
-  | "pn"
-  | "pr"
-  | "ps"
-  | "pt"
-  | "pw"
-  | "py"
-  | "qa"
-  | "re"
-  | "ro"
-  | "rs"
-  | "ru"
-  | "ru"
-  | "rw"
-  | "sa"
-  | "sb"
-  | "sc"
-  | "sd"
-  | "se"
-  | "sg"
-  | "sh"
-  | "si"
-  | "sj"
-  | "sk"
-  | "sl"
-  | "sm"
-  | "sn"
-  | "so"
-  | "sr"
-  | "ss"
-  | "st"
-  | "sv"
-  | "sy"
-  | "sz"
-  | "tc"
-  | "td"
-  | "tf"
-  | "tg"
-  | "th"
-  | "tj"
-  | "tk"
-  | "tl"
-  | "tm"
-  | "tn"
-  | "to"
-  | "tr"
-  | "tt"
-  | "tv"
-  | "tw"
-  | "tw"
-  | "tz"
-  | "ua"
-  | "ug"
-  | "um"
-  | "us"
-  | "uy"
-  | "uz"
-  | "va"
-  | "vc"
-  | "vc"
-  | "vc"
-  | "ve"
-  | "ve"
-  | "vg"
-  | "vi"
-  | "vn"
-  | "vn"
-  | "vu"
-  | "wf"
-  | "ws"
-  | "ye"
-  | "yt"
-  | "za"
-  | "zm"
-  | "zw"

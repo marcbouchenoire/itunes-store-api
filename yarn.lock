@@ -1051,10 +1051,10 @@
   resolved "https://registry.yarnpkg.com/@istanbuljs/schema/-/schema-0.1.3.tgz#e45e384e4b8ec16bce2fd903af78450f6bf7ec98"
   integrity sha512-ZXRY4jNvVgSVQ8DL3LTcakaAtXwTVUxE81hslsyD2AtoXW/wVob10HkOJ1X/pAlcI7D+2YoZKg5do8G/w6RYgA==
 
-"@marcbouchenoire/eslint-config@^2.4.1":
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/@marcbouchenoire/eslint-config/-/eslint-config-2.4.1.tgz#076bc03df7596bcc65a22f85fbc302f6cbec1689"
-  integrity sha512-0Gr/KFqCX9UB5fKWjEhHxEDruCPH8/N6rHMI36+EItzL9QfTxVwDQQqwvq20YBX7PH72HGOWn4ebjjKRFaNwcA==
+"@marcbouchenoire/eslint-config@^2.4.2":
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/@marcbouchenoire/eslint-config/-/eslint-config-2.4.2.tgz#d231d8cf05b6c87c531d1e20332f806e14e4a77f"
+  integrity sha512-tKoRf/ELUsvaGYLSOrLh9Xu38oWYN/fsYoegesqd6j7Lepf3Rc5h+NV6UqIHsOBDxg1aTUavb0Ul26i7635pqA==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^5.5.0"
     "@typescript-eslint/parser" "^5.5.0"
