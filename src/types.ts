@@ -464,7 +464,7 @@ export interface Results {
   tvSoftware: ResultUniversalSoftware
 }
 
-type EntityAll =
+export type EntityAll =
   | EntityAudiobook
   | EntityEbook
   | EntityMovie
@@ -477,13 +477,13 @@ type EntityAll =
   | "allArtist"
   | "allTrack"
 
-type EntityAudiobook = "audiobook" | "audiobookAuthor"
+export type EntityAudiobook = "audiobook" | "audiobookAuthor"
 
-type EntityEbook = "ebook"
+export type EntityEbook = "ebook"
 
-type EntityMovie = "movie" | "movieArtist"
+export type EntityMovie = "movie" | "movieArtist"
 
-type EntityMusic =
+export type EntityMusic =
   | "album"
   | "mix"
   | "musicArtist"
@@ -491,17 +491,21 @@ type EntityMusic =
   | "musicVideo"
   | "song"
 
-type EntityMusicVideo = "musicArtist" | "musicVideo"
+export type EntityMusicVideo = "musicArtist" | "musicVideo"
 
-type EntityPodcast = "podcast" | "podcastAuthor"
+export type EntityPodcast = "podcast" | "podcastAuthor"
 
-type EntityShortFilm = "shortFilm" | "shortFilmArtist"
+export type EntityShortFilm = "shortFilm" | "shortFilmArtist"
 
-type EntitySoftware = "iPadSoftware" | "macSoftware" | "software" | "tvSoftware"
+export type EntitySoftware =
+  | "iPadSoftware"
+  | "macSoftware"
+  | "software"
+  | "tvSoftware"
 
-type EntityTvShow = "tvEpisode" | "tvSeason"
+export type EntityTvShow = "tvEpisode" | "tvSeason"
 
-type AttributeAll =
+export type AttributeAll =
   | "actorTerm"
   | "albumTerm"
   | "allArtistTerm"
@@ -529,13 +533,13 @@ type AttributeAll =
   | "tvEpisodeTerm"
   | "tvSeasonTerm"
 
-type AttributeAudiobook =
+export type AttributeAudiobook =
   | "authorTerm"
   | "genreIndex"
   | "ratingIndex"
   | "titleTerm"
 
-type AttributeMovie =
+export type AttributeMovie =
   | "actorTerm"
   | "artistTerm"
   | "descriptionTerm"
@@ -550,7 +554,7 @@ type AttributeMovie =
   | "releaseYearTerm"
   | "shortFilmTerm"
 
-type AttributeMusic =
+export type AttributeMusic =
   | "albumTerm"
   | "artistTerm"
   | "composerTerm"
@@ -559,14 +563,14 @@ type AttributeMusic =
   | "ratingIndex"
   | "songTerm"
 
-type AttributeMusicVideo =
+export type AttributeMusicVideo =
   | "albumTerm"
   | "artistTerm"
   | "genreIndex"
   | "ratingIndex"
   | "songTerm"
 
-type AttributePodcast =
+export type AttributePodcast =
   | "artistTerm"
   | "authorTerm"
   | "descriptionTerm"
@@ -576,16 +580,16 @@ type AttributePodcast =
   | "ratingIndex"
   | "titleTerm"
 
-type AttributeShortFilm =
+export type AttributeShortFilm =
   | "artistTerm"
   | "descriptionTerm"
   | "genreIndex"
   | "ratingIndex"
   | "shortFilmTerm"
 
-type AttributeSoftware = "softwareDeveloper"
+export type AttributeSoftware = "softwareDeveloper"
 
-type AttributeTvShow =
+export type AttributeTvShow =
   | "descriptionTerm"
   | "genreIndex"
   | "ratingIndex"
@@ -593,32 +597,32 @@ type AttributeTvShow =
   | "tvEpisodeTerm"
   | "tvSeasonTerm"
 
-interface Result {
+export interface Result {
   artistId: number
   artistName: string
 }
 
-interface ResultArtist extends Result {
+export interface ResultArtist extends Result {
   artistLinkUrl: string
   primaryGenreId?: number
   primaryGenreName?: string
   wrapperType: "artist"
 }
 
-interface ResultMovieArtist extends ResultArtist {
+export interface ResultMovieArtist extends ResultArtist {
   artistType: "Artist" | "Author"
 }
 
-interface ResultMusicArtist extends ResultArtist {
+export interface ResultMusicArtist extends ResultArtist {
   amgArtistId: number
   artistType: "Artist" | "Author"
 }
 
-interface ResultPodcastArtist extends ResultArtist {
+export interface ResultPodcastArtist extends ResultArtist {
   artistType: "Podcast Artist"
 }
 
-interface ResultAudiobook extends Result {
+export interface ResultAudiobook extends Result {
   artistViewUrl: string
   artworkUrl100: string
   artworkUrl60: string
@@ -639,7 +643,7 @@ interface ResultAudiobook extends Result {
   wrapperType: string
 }
 
-interface ResultSoftware extends Result {
+export interface ResultSoftware extends Result {
   artistViewUrl: string
   artworkUrl100: string
   artworkUrl512: string
@@ -677,7 +681,7 @@ interface ResultSoftware extends Result {
   wrapperType: "software"
 }
 
-interface ResultUniversalSoftware extends ResultSoftware {
+export interface ResultUniversalSoftware extends ResultSoftware {
   advisories: string[]
   appletvScreenshotUrls: string[]
   features: string[]
@@ -687,11 +691,11 @@ interface ResultUniversalSoftware extends ResultSoftware {
   supportedDevices: string[]
 }
 
-interface ResultMacSoftware extends ResultSoftware {
+export interface ResultMacSoftware extends ResultSoftware {
   kind: "mac-software"
 }
 
-interface ResultEbook extends Result {
+export interface ResultEbook extends Result {
   artistIds: number[]
   artistViewUrl: string
   artworkUrl100: string
@@ -713,7 +717,7 @@ interface ResultEbook extends Result {
   userRatingCount: number
 }
 
-interface ResultCollection extends Result {
+export interface ResultCollection extends Result {
   artistViewUrl: string
   artworkUrl100: string
   artworkUrl60: string
@@ -732,19 +736,19 @@ interface ResultCollection extends Result {
   wrapperType: "collection"
 }
 
-interface ResultAlbum extends ResultCollection {
+export interface ResultAlbum extends ResultCollection {
   amgArtistId: number
   collectionType: "Album"
 }
 
-interface ResultTvSeason extends ResultCollection {
+export interface ResultTvSeason extends ResultCollection {
   collectionHdPrice?: number
   collectionType: "TV Season"
   contentAdvisoryRating: string
   longDescription: string
 }
 
-interface ResultTrack extends Result {
+export interface ResultTrack extends Result {
   artistViewUrl: string
   artworkUrl100: string
   artworkUrl30: string
@@ -769,7 +773,7 @@ interface ResultTrack extends Result {
   wrapperType: "track"
 }
 
-interface ResultMusicVideo extends ResultTrack {
+export interface ResultMusicVideo extends ResultTrack {
   discCount: number
   discNumber: number
   kind: "music-video"
@@ -778,7 +782,7 @@ interface ResultMusicVideo extends ResultTrack {
   trackTimeMillis: number
 }
 
-interface ResultPodcast extends ResultTrack {
+export interface ResultPodcast extends ResultTrack {
   artworkUrl600: string
   collectionHdPrice?: number
   contentAdvisoryRating: string
@@ -791,7 +795,7 @@ interface ResultPodcast extends ResultTrack {
   trackRentalPrice: number
 }
 
-interface ResultMusicTrack extends ResultTrack {
+export interface ResultMusicTrack extends ResultTrack {
   discCount: number
   discNumber: number
   isStreamable: boolean
@@ -801,7 +805,7 @@ interface ResultMusicTrack extends ResultTrack {
   trackTimeMillis: number
 }
 
-interface ResultTvEpisode extends ResultTrack {
+export interface ResultTvEpisode extends ResultTrack {
   collectionHdPrice?: number
   contentAdvisoryRating: string
   discCount: number
@@ -815,7 +819,7 @@ interface ResultTvEpisode extends ResultTrack {
   trackTimeMillis: number
 }
 
-interface ResultMovie
+export interface ResultMovie
   extends Omit<
     ResultTrack,
     | "artistId"
