@@ -33,14 +33,14 @@ describe("lookup", (it) => {
     restoreAll()
   })
 
-  it("should return the expected result", async () => {
+  it("should return the expected results", async () => {
     const { resultCount, results } = await lookup("id", 1007596731)
 
-    assert.equal(resultCount, 1)
+    assert.equal(resultCount > 0, true)
     assert.equal(results.length, resultCount)
   })
 
-  it("should return the expected result given a valid URL", async () => {
+  it("should return the expected results given a valid URL", async () => {
     const { resultCount: softwareResultCount, results: softwareResults } =
       await lookup(
         "url",
@@ -85,15 +85,15 @@ describe("lookup", (it) => {
         "https://podcasts.apple.com/us/podcast/panic-podcast/id1495115716"
       )
 
-    assert.equal(softwareResultCount, 1)
-    assert.equal(audiobookResultCount, 1)
-    assert.equal(bookResultCount, 1)
-    assert.equal(authorResultCount, 1)
-    assert.equal(songResultCount, 1)
-    assert.equal(albumResultCount, 1)
-    assert.equal(musicVideoResultCount, 1)
-    assert.equal(artistResultCount, 1)
-    assert.equal(podcastResultCount, 1)
+    assert.equal(softwareResultCount > 0, true)
+    assert.equal(audiobookResultCount > 0, true)
+    assert.equal(bookResultCount > 0, true)
+    assert.equal(authorResultCount > 0, true)
+    assert.equal(songResultCount > 0, true)
+    assert.equal(albumResultCount > 0, true)
+    assert.equal(musicVideoResultCount > 0, true)
+    assert.equal(artistResultCount > 0, true)
+    assert.equal(podcastResultCount > 0, true)
 
     assert.equal(softwareResults.length, softwareResultCount)
     assert.equal(audiobookResults.length, audiobookResultCount)

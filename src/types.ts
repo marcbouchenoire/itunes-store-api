@@ -1,18 +1,18 @@
 export type PlainObject<T = unknown> = Record<string, T>
 
-export interface Options {
-  /**
-   * A two-letter country code where the queried store catalog will be from.
-   */
-  country: Country
-}
-
-export interface SearchOptions<M extends Media, E extends Entities[M] = never>
-  extends Options {
+export interface Options<
+  M extends Media = Media,
+  E extends Entities[M] = never
+> {
   /**
    * Which attribute to search for, relative to the specified media type.
    */
   attribute: Attributes[M]
+
+  /**
+   * A two-letter country code where the queried store catalog will be from.
+   */
+  country: Country
 
   /**
    * The type of results returned, relative to the specified media type.
@@ -40,10 +40,7 @@ export interface SearchOptions<M extends Media, E extends Entities[M] = never>
   sort: Sort
 }
 
-export interface SearchResponse<
-  M extends Media,
-  E extends Entities[M] = never
-> {
+export interface Response<M extends Media, E extends Entities[M] = never> {
   /**
    * The number of results.
    */
@@ -53,18 +50,6 @@ export interface SearchResponse<
    * An array of results.
    */
   results: (E extends undefined ? Results[Entities[M]] : Results[E])[]
-}
-
-export interface LookupResponse {
-  /**
-   * The number of results.
-   */
-  resultCount: 0 | 1
-
-  /**
-   * An array of results.
-   */
-  results: [] | [Results[keyof Results]]
 }
 
 export interface ParseOptions {
