@@ -2,14 +2,12 @@ import {
   AlbumMatch,
   Entities,
   Lookup,
-  LookupResponse,
   Match,
   Media,
   Options,
   ParseOptions,
   PlainObject,
-  SearchOptions,
-  SearchResponse,
+  Response,
   UrlMatch
 } from "./types"
 import { encodeURIFormComponent } from "./utils/encode-form-uri-component"
@@ -135,11 +133,11 @@ function parse(url: string): Partial<ParseOptions> {
  */
 export async function search<M extends Media, E extends Entities[M]>(
   search: string,
-  options: Partial<SearchOptions<M, E>> = {}
-): Promise<SearchResponse<M, E>> {
+  options: Partial<Options<M, E>> = {}
+): Promise<Response<M, E>> {
   const resolvedOptions = { ...defaultOptions, ...options }
 
-  return await query<SearchResponse<M, E>>("search", {
+  return await query<Response<M, E>>("search", {
     ...resolvedOptions,
     explicit: resolvedOptions.explicit ? "Yes" : "No",
     term: search
@@ -152,7 +150,13 @@ export async function search<M extends Media, E extends Entities[M]>(
  * @param type - The type of value to look for.
  * @param value - The value to look for.
  * @param [options] - An optional set of settings.
+ * @param [options.attribute] - Which attribute to look up, relative to the specified media type.
  * @param [options.country] - A two-letter country code where the queried store catalog will be from.
+ * @param [options.entity] - The type of results returned, relative to the specified media type.
+ * @param [options.explicit] - Whether to include explicit content.
+ * @param [options.limit] - Limit the number of results.
+ * @param [options.media] - The media type to look up.
+ * @param [options.sort] - Whether to sort results by popularity or recentness.
  * @returns A promise fulfilling into the fetched results.
  *
  * @example
@@ -166,27 +170,27 @@ export async function search<M extends Media, E extends Entities[M]>(
  * // results: [Result]
  * ```
  */
-export async function lookup(
+export async function lookup<M extends Media, E extends Entities[M]>(
   type: Lookup,
   value: number,
-  options?: Partial<Options>
-): Promise<LookupResponse>
-export async function lookup(
+  options?: Partial<Options<M, E>>
+): Promise<Response<M, E>>
+export async function lookup<M extends Media, E extends Entities[M]>(
   type: "url",
   value: string,
-  options?: Partial<Options>
-): Promise<LookupResponse>
-export async function lookup(
+  options?: Partial<Options<M, E>>
+): Promise<Response<M, E>>
+export async function lookup<M extends Media, E extends Entities[M]>(
   type: Lookup | "url",
   value: number | string,
-  options: Partial<Options> = {}
-): Promise<LookupResponse> {
+  options: Partial<Options<M, E>> = {}
+): Promise<Response<M, E>> {
   const resolvedOptions = { ...defaultOptions, ...options }
   const resolvedValue = (
     type === "url" ? parse(String(value)) : { [type]: value }
   ) as Record<Exclude<Lookup, "url">, number | string>
 
-  return await query<LookupResponse>("lookup", {
+  return await query<Response<M, E>>("lookup", {
     ...resolvedOptions,
     ...resolvedValue
   })
