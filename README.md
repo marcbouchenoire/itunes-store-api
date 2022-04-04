@@ -53,7 +53,7 @@ Invoke it asynchronously and access results in return.
 ```typescript
 const { results } = await search("M83")
 
-// results: [Result, Result, Result...]
+// results: [Result, Result, Result…]
 ```
 
 #### `lookup`
@@ -97,12 +97,10 @@ Both `search` and `lookup` support a trailing `options` argument.
 A two-letter country code where the queried store catalog will be from. Defaults to `"us"`.
 
 ```typescript
-await search("Le Fabuleux Destin d'Amélie Poulain", { country: "fr" })
+await lookup("id", 1491051628, { country: "fr" })
 ```
 
 #### `limit`
-
-> Only available for `search`.
 
 Limit the number of results. Defaults to `50`.
 
@@ -112,8 +110,6 @@ await search("C418", { limit: 10 })
 
 #### `sort`
 
-> Only available for `search`.
-
 Whether to sort results by popularity (`"popular"`) or recentness (`"recent"`). Defaults to `"popular"`.
 
 ```typescript
@@ -121,8 +117,6 @@ await search("Twitter", { sort: "popular" })
 ```
 
 #### `media`
-
-> Only available for `search`.
 
 The media type to search for—see [Table 2-1](https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/iTuneSearchAPI/Searching.html). Defaults to `"all"`.
 
@@ -132,17 +126,17 @@ await search("Lost in Translation", { media: "movie" })
 
 #### `entity`
 
-> Only available for `search`.
-
 The type of results returned, relative to the specified media type—see [Table 2-1](https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/iTuneSearchAPI/Searching.html).
 
 ```typescript
-await search("Things", { media: "software", entity: "macSoftware" })
+const album = await lookup("id", 1007596648)
+const songs = await lookup("id", 1007596648, { entity: "song" })
+
+// album: { results: [ResultAlbum] }
+// songs: { results: [ResultMusicTrack, ResultMusicTrack, ResultMusicTrack…] }
 ```
 
 #### `attribute`
-
-> Only available for `search`.
 
 Which attribute to search for, relative to the specified media type—see [Table 2-2](https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/iTuneSearchAPI/Searching.html).
 
@@ -151,8 +145,6 @@ await search("Greta Gerwig", { entity: "movieArtist", attribute: "actorTerm" })
 ```
 
 #### `explicit`
-
-> Only available for `search`.
 
 Whether to include explicit content. Defaults to `true`.
 
