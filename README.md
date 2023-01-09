@@ -2,7 +2,7 @@
 
 💿 Query Apple store catalogs using the iTunes Search API.
 
-[![build](https://img.shields.io/github/workflow/status/marcbouchenoire/itunes-store-api/CI)](https://github.com/marcbouchenoire/itunes-store-api/actions/workflows/ci.yml)
+[![build](https://img.shields.io/github/actions/workflow/status/marcbouchenoire/itunes-store-api/.github/workflows/ci.yml)](https://github.com/marcbouchenoire/itunes-store-api/actions/workflows/ci.yml)
 [![npm](https://img.shields.io/npm/v/itunes-store-api?color=%230cf)](https://www.npmjs.com/package/itunes-store-api)
 [![size](https://img.shields.io/bundlephobia/minzip/itunes-store-api?label=size&color=%2385f)](https://bundlephobia.com/package/itunes-store-api)
 [![coverage](https://img.shields.io/codecov/c/github/marcbouchenoire/itunes-store-api?color=%23e4b)](https://codecov.io/gh/marcbouchenoire/itunes-store-api)
