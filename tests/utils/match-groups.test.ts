@@ -3,12 +3,22 @@ import { matchGroups } from "../../src/utils/match-groups"
 import { describe } from "../helpers"
 
 interface ValidMatch {
-  letters: string // eslint-disable-line jsdoc/require-jsdoc
-  numbers: string // eslint-disable-line jsdoc/require-jsdoc
+  /**
+   * The consecutively matched letters.
+   */
+  letters: string
+
+  /**
+   * The consecutively matched numbers.
+   */
+  numbers: string
 }
 
 interface EmptyMatch {
-  dashes: string // eslint-disable-line jsdoc/require-jsdoc
+  /**
+   * The consecutively matched dashes.
+   */
+  dashes: string
 }
 
 describe("matchGroups", (it) => {

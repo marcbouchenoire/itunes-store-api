@@ -1,4 +1,4 @@
-import {
+import type {
   AlbumMatch,
   Entities,
   Lookup,
@@ -53,16 +53,12 @@ async function query<T = PlainObject>(
     query.set(parameter, encodeURIFormComponent(value))
   }
 
-  try {
-    const response = await fetch(`${API}/${endpoint}?${query.toString()}`)
+  const response = await fetch(`${API}/${endpoint}?${query.toString()}`)
 
-    if (response.ok) {
-      return await response.json()
-    } else {
-      throw new Error(response.statusText)
-    }
-  } catch (error) {
-    return Promise.reject(error)
+  if (response.ok) {
+    return await response.json()
+  } else {
+    throw new Error(response.statusText)
   }
 }
 
