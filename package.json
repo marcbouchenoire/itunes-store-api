@@ -36,15 +36,15 @@
   "nano-staged": {
     "**/*.mjs": [
       "eslint --fix",
-      "yarn prettier"
+      "pnpm prettier"
     ],
     "**/*.{ts,tsx}": [
       "eslint --fix",
       "tsatsiki --project tsconfig.json",
-      "yarn prettier"
+      "pnpm prettier"
     ],
     "**/*.{json,md,yml}": [
-      "yarn prettier"
+      "pnpm prettier"
     ]
   },
   "husky": {
@@ -55,14 +55,14 @@
   "scripts": {
     "build": "microbundle --tsconfig tsconfig.build.json",
     "prettier": "prettier --write --loglevel silent --ignore-path .eslintignore",
-    "lint": "yarn lint:eslint && yarn lint:tsc && yarn lint:prettier",
+    "lint": "pnpm lint:eslint && pnpm lint:tsc && pnpm lint:prettier",
     "lint:eslint": "eslint '**/*.{mjs,ts,tsx}' --fix",
-    "lint:prettier": "yarn prettier '**/*.{mjs,ts,tsx,json,md,yml}'",
+    "lint:prettier": "pnpm prettier '**/*.{mjs,ts,tsx,json,md,yml}'",
     "lint:tsc": "tsc --project tsconfig.json",
-    "prepublishOnly": "yarn build",
-    "release": "yarn login && np",
+    "prepublishOnly": "pnpm build",
+    "release": "pnpm login && np",
     "test": "uvu --require tsm tests",
-    "test:coverage": "nyc --temp-dir=.nyc.log --include=src yarn test && nyc report --temp-dir=.nyc.log --reporter=lcov"
+    "test:coverage": "nyc --temp-dir=.nyc.log --include=src pnpm test && nyc report --temp-dir=.nyc.log --reporter=lcov"
   },
   "devDependencies": {
     "@marcbouchenoire/eslint-config": "^2.8.1",
