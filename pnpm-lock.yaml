@@ -4,6 +4,7 @@ specifiers:
   '@changesets/cli': ^2.26.0
   '@marcbouchenoire/eslint-config': ^2.8.1
   '@marcbouchenoire/prettier-config': ^1.1.0
+  '@types/node': ^18.11.18
   eslint: ^8.31.0
   husky: 4.3.8
   microbundle: ^0.15.1
@@ -21,6 +22,7 @@ devDependencies:
   '@changesets/cli': 2.26.0
   '@marcbouchenoire/eslint-config': 2.8.1_z6jn4luhndly6szzkk2fv4o2bi
   '@marcbouchenoire/prettier-config': 1.1.0_prettier@2.8.2
+  '@types/node': 18.11.18
   eslint: 8.31.0
   husky: 4.3.8
   microbundle: 0.15.1
