@@ -63,8 +63,8 @@
     "test": "uvu --require tsm tests",
     "test:coverage": "nyc --temp-dir=.nyc.log --include=src pnpm test && nyc report --temp-dir=.nyc.log --reporter=lcov",
     "change": "pnpm changeset",
-    "bump": "pnpm changeset version && pnpm install",
-    "release": "pnpm test && pnpm publish -r"
+    "version": "pnpm changeset version && pnpm install --no-frozen-lockfile",
+    "release": "pnpm build && pnpm test && pnpm publish"
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.0",
