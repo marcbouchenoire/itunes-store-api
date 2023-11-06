@@ -20,20 +20,6 @@
 
 ## Installation
 
-#### Skypack
-
-```javascript
-import { search, lookup } from "https://cdn.skypack.dev/itunes-store-api"
-```
-
-#### Yarn
-
-```bash
-yarn add itunes-store-api
-```
-
-#### npm
-
 ```bash
 npm install itunes-store-api
 ```
