@@ -30,25 +30,6 @@
   },
   "types": "./dist/index.d.ts",
   "prettier": "@marcbouchenoire/prettier-config",
-  "nano-staged": {
-    "**/*.mjs": [
-      "eslint --fix",
-      "pnpm prettier"
-    ],
-    "**/*.{ts,tsx}": [
-      "eslint --fix",
-      "tsatsiki --project tsconfig.json",
-      "pnpm prettier"
-    ],
-    "**/*.{json,md,yml}": [
-      "pnpm prettier"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "nano-staged"
-    }
-  },
   "scripts": {
     "build": "microbundle --tsconfig tsconfig.build.json",
     "prettier": "prettier --write --loglevel silent --ignore-path .eslintignore",
@@ -69,9 +50,7 @@
     "@marcbouchenoire/prettier-config": "^1.1.0",
     "@types/node": "^18.11.18",
     "eslint": "^8.31.0",
-    "husky": "4.3.8",
     "microbundle": "^0.15.1",
-    "nano-staged": "^0.8.0",
     "nanospy": "^0.5.0",
     "node-fetch": "^3.3.0",
     "nyc": "^15.1.0",
